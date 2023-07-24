@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5435:5435"
+    environment:
+      POSTGRES_PASSWORD: pass1234
+
+#services:
+#  db:
+#    image: postgres
+#    restart: always
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: pass1234
+#      POSTGRES_DB: postgres
+#    ports:
+#      - '5435:5435'
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#    networks:
+#      - todo-api_default
+#
+#  server:
+#    build: .
+#    ports:
+#      - '3003:3003'
+#    depends_on:
+#      - db
+#    networks:
+#      - todo-api_default
+#
+#volumes:
+#  postgres_data:
+#
+#networks:
+#  todo-api_default:
+#    driver: bridge

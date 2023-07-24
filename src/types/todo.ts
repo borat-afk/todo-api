@@ -5,7 +5,7 @@ export interface ITodo {
   id?: number;
   description: string;
   status: TodoStatus;
-  createDate: string;
-  updateDate?: string;
+  createDate: Date;
+  updateDate?: Date;
   user: IUser
 }
