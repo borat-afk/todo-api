@@ -12,9 +12,9 @@ const connectionDB = async (): Promise<Connection> => {
     port: Number(process.env.DB_PORT) || 5432,
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
+    synchronize: process.env.ENVARIONMENT === 'dev',
     entities: [User, Todo],
-    synchronize: true,
-    // synchronize: process.env.ENVARIONMENT === 'dev',
+    migrations: ['./src/migrations/**/*{.js,.ts}'],
     logging: true
   });
 

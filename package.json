@@ -9,7 +9,11 @@
     "dev": "ts-node-esm --experimental-specifier-resolution=node --transpile-only src/server.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "typeorm": "typeorm"
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "typeorm:run": "npm run typeorm migration:run -- -d ./src/dataSource.js",
+    "typeorm:generate": "npm run typeorm -- -d ./src/dataSource.js migration:generate src/migrations/%npm_config_name%",
+    "typeorm:create": "npm run typeorm -- migration:create src/migrations/%npm_config_name%",
+    "typeorm:revert": "npm run typeorm -- -d ./src/dataSource.js migration:revert"
   },
   "repository": {
     "type": "git",
