@@ -35,12 +35,18 @@ export const getTodosByUser = async (req: Request, res: Response): Promise<Respo
   try {
     const userId = +req.params.userId;
 
-    const userRepository = getRepository(User);
-    const user = await userRepository.findOneById(userId);
+    const todoRepository = getRepository(Todo);
+    const todoList = await todoRepository
+      .createQueryBuilder('todo')
+      .leftJoinAndSelect('todo.user', 'user')
+      .where('user.id = :userId', { userId })
+      .getMany();
 
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!todoList.length) {
+      return res.status(404).json({ message: 'Todos not found for the user' });
+    }
 
-    res.json(user.todos);
+    res.json(todoList);
   } catch (e) {
     res.status(500).json({ message: 'Fetch todos error' });
   }
