@@ -6,9 +6,7 @@
   "password": "pass1234",
   "database": "postgres",
   "entities": ["src/entities/*.ts"],
-  "migrations": ["src/migrations/*{.ts,.js}"],
   "cli": {
     "entitiesDir": "src/entities",
-    "migrationsDir": "src/migrations"
   }
 }

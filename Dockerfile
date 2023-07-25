@@ -31,8 +31,5 @@ RUN apk add --no-cache bash
 # Set the wait-for-it script as an entrypoint
 ENTRYPOINT ["/usr/src/app/wait-for-it.sh", "db:5432", "--", "node", "dist/server.js"]
 
-# Run migrations after container starts
-CMD ["npm", "run", "typeorm:generate-migration", "--name=create_tables", "&&", "npm", "run", "typeorm:run"]
-
 # Expose port 3003
 EXPOSE 3003
