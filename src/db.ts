@@ -13,7 +13,8 @@ const connectionDB = async (): Promise<Connection> => {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     entities: [User, Todo],
-    synchronize: process.env.ENVARIONMENT === 'dev',
+    synchronize: true,
+    // synchronize: process.env.ENVARIONMENT === 'dev',
     logging: true
   });
 

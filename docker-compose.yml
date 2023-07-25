@@ -14,20 +14,28 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - todo-api_default
+      - todo-api_network
 
   server:
     build: .
+    environment:
+      PORT: 3003
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: pass1234
+      DB_NAME: postgres
+      ENVARIONMENT: stage
     ports:
       - '3003:3003'
     depends_on:
       - db
     networks:
-      - todo-api_default
+      - todo-api_network
 
 volumes:
   postgres_data:
 
 networks:
-  todo-api_default:
+  todo-api_network:
     driver: bridge
