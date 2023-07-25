@@ -4,7 +4,7 @@ import { User } from '../entities/user.entity';
 
 export const getUserByIp = async (req: Request, res: Response): Promise<Response | void> => {
   try {
-    const ipAddress = req.ip; // Отримання IP-адреси з запиту
+    const ipAddress = req.ip;
 
     const userRepository = getRepository(User);
 
@@ -26,11 +26,12 @@ export const createUser = async (req: Request, res: Response): Promise<Response 
     if (!username) return res.status(400).json({ message: 'Username required' });
 
     const userRepository = getRepository(User);
+
     const user = userRepository.create({ username, ip: ipAddress });
     await userRepository.save(user);
 
     res.status(201).json({ data: user, message: `User ${user.username} successfully created` })
   } catch (e) {
-    res.status(500).json({ message: 'Create user error' })
+    res.status(500).json({ message: 'Create user error', error: e.message })
   }
 };

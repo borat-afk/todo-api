@@ -3,8 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// Закоментуйте рядок зі зв'язуванням "reflect-metadata", оскільки це потрібно лише для транспілювання TypeScript коду в JavaScript
-// import "reflect-metadata";
+require("reflect-metadata");
 const db_1 = __importDefault(require("./db"));
 const app_1 = __importDefault(require("./app"));
 const dotenv_1 = __importDefault(require("dotenv"));

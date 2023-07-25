@@ -1,5 +1,4 @@
-// Закоментуйте рядок зі зв'язуванням "reflect-metadata", оскільки це потрібно лише для транспілювання TypeScript коду в JavaScript
-// import "reflect-metadata";
+import 'reflect-metadata';
 import connectionDB from './db';
 import app from './app';
 import dotenv from 'dotenv';

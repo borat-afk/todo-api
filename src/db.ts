@@ -1,4 +1,6 @@
-import { createConnection, Connection } from 'typeorm/browser';
+import { createConnection, Connection } from 'typeorm';
+import { User } from './entities/user.entity';
+import { Todo } from './entities/todo.entity';
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -10,7 +12,7 @@ const connectionDB = async (): Promise<Connection> => {
     port: Number(process.env.DB_PORT) || 5432,
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
-    entities: [],
+    entities: [User, Todo],
     synchronize: process.env.ENVARIONMENT === 'dev',
     logging: true
   });
