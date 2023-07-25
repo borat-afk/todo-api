@@ -32,6 +32,6 @@ export const createUser = async (req: Request, res: Response): Promise<Response 
 
     res.status(201).json({ data: user, message: `User ${user.username} successfully created` })
   } catch (e) {
-    res.status(500).json({ message: 'Create user error', error: e.message })
+    res.status(500).json({ message: 'Create user error' })
   }
 };
